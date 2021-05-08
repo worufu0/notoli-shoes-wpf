@@ -1,0 +1,283 @@
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\MyStore.exe.config
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\MyStore.pdb
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\Aspose.Cells.dll
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\EntityFramework.dll
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\Aspose.Cells.xml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\EntityFramework.xml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\App.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\BillsUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\BossView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\ChangeDatabaseView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\CustomersUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\EmployeesUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\InventoryUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\LoginView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\MyMessageBoxView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\SalesmanView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\StatisticUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\App.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore_Content.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore_MarkupCompile.cache
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore_MarkupCompile.lref
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\BillsUserControlView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\BossView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\BossViewResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\ChangeDatabaseResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\ChangeDatabaseView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\CustomersUserControlView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\EmployeesUserControlView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\InventoryUserControlView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\InventoryUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\LoginView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\LoginViewResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\MyMessageBoxResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\MyMessageBoxView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\SalesmanView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\SalesmanViewResource.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\Views\StatisticUserControlView.baml
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.g.resources
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.Properties.Resources.resources
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.csproj.GenerateResource.cache
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.csproj.CoreCompileInputs.cache
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.csproj.Fody.CopyLocal.cache
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.csproj.CopyComplete
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\MyStore - backup\MyStore\obj\Debug\MyStore.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\MyStore.exe.config
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\MyStore.exe
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\MyStore.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\Aspose.Cells.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\EntityFramework.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\EntityFramework.SqlServer.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\Aspose.Cells.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\EntityFramework.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\EntityFramework.SqlServer.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.csprojAssemblyReference.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\App.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\BillsUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\BossView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\ChangeDatabaseView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\CustomersUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\EmployeesUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\InventoryUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\LoginView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\MyMessageBoxView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\SalesmanView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\StatisticUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\App.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore_Content.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore_MarkupCompile.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore_MarkupCompile.lref
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\BillsUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\BossView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\BossViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\ChangeDatabaseResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\ChangeDatabaseView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\CustomersUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\EmployeesUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\InventoryUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\InventoryUserControlViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\LoginView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\LoginViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\MyMessageBoxResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\MyMessageBoxView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\SalesmanView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\SalesmanViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\Views\StatisticUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.g.resources
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.Properties.Resources.resources
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.csproj.GenerateResource.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.csproj.CoreCompileInputs.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.csproj.Fody.CopyLocal.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.csproj.CopyComplete
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.exe
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\MyStore 2811\MyStore\obj\Debug\MyStore.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\MyStore.exe.config
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\MyStore.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\EntityFramework.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\EntityFramework.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.csprojAssemblyReference.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\App.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\BossView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\LoginView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\App.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore_Content.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.lref
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\BossView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\BossViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\LoginView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\LoginViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\SalesmanViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.g.resources
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.Properties.Resources.resources
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.GenerateResource.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CoreCompileInputs.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.Fody.CopyLocal.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CopyComplete
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 2\Source\MyStore\MyStore\obj\Debug\MyStore.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.exe.config
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\App.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\App.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_Content.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.lref
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlViewResource.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.baml
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.g.resources
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.Properties.Resources.resources
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.GenerateResource.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CoreCompileInputs.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.Fody.CopyLocal.cache
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CopyComplete
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.exe
+C:\Users\Thien Phu\Desktop\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.exe.config
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.exe
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\MyStore.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.dll
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Aspose.Cells.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\EntityFramework.SqlServer.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\LiveCharts.Wpf.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\bin\Debug\Microsoft.Xaml.Behaviors.xml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csprojAssemblyReference.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlViewResource.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\App.baml
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\PurchasesUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\BossView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\ChangeDatabaseView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\CustomersUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\EmployeesUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\InventoryUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\LoginView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\MyMessageBoxView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\SalesmanView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\Views\StatisticUserControlView.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\App.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_Content.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore_MarkupCompile.lref
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.g.resources
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.Properties.Resources.resources
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.GenerateResource.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CoreCompileInputs.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.Fody.CopyLocal.cache
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.csproj.CopyComplete
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.exe
+F:\Tài liệu\Học tập\Đang học\Lập trình ứng dụng quản lý 1\18600359_18600372_18600392_Milestone 3\Source\MyStore\MyStore\obj\Debug\MyStore.pdb

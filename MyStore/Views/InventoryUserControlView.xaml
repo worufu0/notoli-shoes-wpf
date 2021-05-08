@@ -1,0 +1,937 @@
+﻿<UserControl x:Class="MyStore.Views.InventoryUserControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyStore.Views"
+             xmlns:viewModel="clr-namespace:MyStore.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:helper="clr-namespace:MyStore.Helpers"
+             mc:Ignorable="d" 
+             x:Name="inventoryUserControl"
+             Width="1047"
+             Height="720">
+    <UserControl.DataContext>
+        <viewModel:InventoryUserControlViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary Source="InventoryUserControlViewResource.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center"
+                   Margin="20 0 0 0"
+                   Foreground="#3a3a3a"
+                   FontFamily="Arial"
+                   FontWeight="Bold"
+                   FontSize="36"
+                   Text="Inventory"/>
+        <Grid Grid.Row="1"
+              Margin="20 0 20 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel HorizontalAlignment="Left"
+                                Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Text="Products in"/>
+                        <ComboBox x:Name="categoryComboBox"
+                                  Margin="10 0 0 0"
+                                  SelectedIndex="0"
+                                  Width="130"
+                                  Style="{StaticResource iucComboBoxStyle}"
+                                  ItemContainerStyle="{StaticResource iucComboBoxItemStyle}"
+                                  ItemsSource="{Binding model.categoryTable, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                  DisplayMemberPath="CategoryName"
+                                  SelectedValuePath="CategoryID">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding ReloadProducts}"
+                                                           CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ReloadProducts}"
+                                                           CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <ToggleButton x:Name="addCategoryToggleButton"
+                                      Margin="10 0 0 0"
+                                      ToolTip="Add category"
+                                      Width="24"
+                                      Height="24"
+                                      Style="{StaticResource iucAddButtonStyle}"
+                                      Command="{Binding PopupAddCategory}"
+                                      CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="addCategoryPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="150">
+                                    <StackPanel Margin="10">
+                                        <TextBlock Margin="0 0 0 10"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontSize="18"
+                                                   FontWeight="Bold"
+                                                   Text="Add new category"/>
+                                        <StackPanel>
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       FontFamily="Arial"
+                                                       FontStyle="Italic"
+                                                       FontSize="14"
+                                                       Text="Category name"/>
+                                            <TextBox x:Name="popupAddCategoryTextBox"
+                                                     Margin="0 0 0 10"
+                                                     TextAlignment="Center"
+                                                     MaxLength="20"
+                                                     Width="200"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"/>
+                                            <Button x:Name="popupAddCategoryButton"
+                                                    Content="ADD"
+                                                    Width="100"
+                                                    Height="30"
+                                                    Style="{StaticResource iucAddUpdateButtonStyle}"
+                                                    Command="{Binding AddCategory}"
+                                                    CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Button Margin="10 0 0 0"
+                                ToolTip="Delete category"
+                                Width="24"
+                                Height="24"
+                                Style="{StaticResource iucDeleteButtonStyle}"
+                                Command="{Binding DeleteCategory}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                        <ToggleButton x:Name="updateCategoryToggleButton"
+                                      Margin="10 0 0 0"
+                                      ToolTip="Update category"
+                                      Width="24"
+                                      Height="24"
+                                      Style="{StaticResource iucEditButtonStyle}"
+                                      Command="{Binding PopupUpdateCategory}"
+                                      CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="updateCategoryPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="150">
+                                    <StackPanel Margin="10">
+                                        <TextBlock Margin="0 0 0 10"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontSize="18"
+                                                   FontWeight="Bold" Text="Update category"/>
+                                        <StackPanel>
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       FontFamily="Arial"
+                                                       FontStyle="Italic"
+                                                       FontSize="14"
+                                                       Text="Category name"/>
+                                            <TextBox x:Name="popupUpdateCategoryTextBox"
+                                                     Margin="0 0 0 10"
+                                                     TextAlignment="Center"
+                                                     MaxLength="20"
+                                                     Width="200"
+                                                     Text="{Binding ElementName=categoryComboBox, Path=SelectedItem.CategoryName, Mode=OneWay}"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"/>
+                                            <Button x:Name="popupUpdateCategoryButton"
+                                                    Content="UPDATE"
+                                                    Width="100"
+                                                    Height="30"
+                                                    Style="{StaticResource iucAddUpdateButtonStyle}"
+                                                    Command="{Binding UpdateCategory}"
+                                                    CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Button Margin="95 0 0 0"
+                                ToolTip="Import from Excel"
+                                Width="26"
+                                Height="26"
+                                Style="{StaticResource iucExcelImportButtonStyle}"
+                                Command="{Binding ExcelImport}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Grid HorizontalAlignment="Right">
+                        <TextBox x:Name="searchBox"
+                                 Style="{StaticResource iucSearchBoxStyle}">
+                            <TextBox.Effect>
+                                <DropShadowEffect x:Name="effect"
+                                                  Color="#dddddd"
+                                                  BlurRadius="5"
+                                                  ShadowDepth="1"/>
+                            </TextBox.Effect>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding SearchByName}"
+                                                           CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Foreground="#aaaaaa"
+                                   Margin="5 0 0 0"
+                                   IsHitTestVisible="False"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   FontSize="14"
+                                   Text="Search by product name">
+                            <TextBlock.Visibility>
+                                <MultiBinding Converter="{StaticResource focusAndEmptyToVisibilityConverter}">
+                                    <Binding ElementName="searchBox"
+                                             Path="IsFocused"/>
+                                    <Binding ElementName="searchBox"
+                                             Path="Text.IsEmpty"/>
+                                </MultiBinding>
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Background="#dddddd">
+                    <Image Margin="2 1 0 1"
+                           HorizontalAlignment="Left"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           Stretch="Uniform"
+                           Source="{Binding ElementName=categoryComboBox, Path=SelectedItem.CategoryImage, Mode=OneWay}"/>
+                    <StackPanel Margin="0 0 10 0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Height="30">
+                        <ToggleButton x:Name="addProductToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Add product"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource iucAddButtonStyle}"
+                                      Command="{Binding PopupAddProduct}"
+                                      CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="addProductPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="300"
+                                        Height="520">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Add new product"/>
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Name"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupAddProductNameTextBox"
+                                                     Padding="5"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Color"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <TextBox x:Name="popupAddProductColorTextBox"
+                                                         Padding="5"
+                                                         Style="{StaticResource iucDetailTextBoxStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Price"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupAddProductPriceTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <StackPanel VerticalAlignment="Center"
+                                                    Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Category"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupAddProductCategoryComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource iucComboBoxStyle}"
+                                                      ItemsSource="{Binding model.categoryTable, Mode=OneWay}"
+                                                      DisplayMemberPath="CategoryName"
+                                                      SelectedValuePath="CategoryID"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Total"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupAddProductTotalTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Sold"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupAddProductSoldTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="2"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Remain"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupAddProductRemainTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <StackPanel Grid.Row="5"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Description"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupAddProductDescriptionTextBox"
+                                                     TextWrapping="Wrap"
+                                                     Height="100"
+                                                     VerticalScrollBarVisibility="Visible"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="6"
+                                                Content="ADD"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource iucAddUpdateButtonStyle}"
+                                                Command="{Binding AddProduct}"
+                                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Button Margin="0 0 10 0"
+                                ToolTip="Delete product"
+                                Width="20"
+                                Height="20"
+                                Style="{StaticResource iucDeleteButtonStyle}"
+                                Command="{Binding DeleteProduct}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                        <ToggleButton x:Name="updateProductToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Update product"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource iucEditButtonStyle}"
+                                      Command="{Binding PopupUpdateProduct}"
+                                      CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="updateProductPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="300"
+                                        Height="520">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Update product"/>
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Name"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupUpdateProductNameTextBox"
+                                                     Padding="5"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                                     Text="{Binding ElementName=detailNameTextBox, Path=Text}"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Color"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <TextBox x:Name="popupUpdateProductColorTextBox"
+                                                         Padding="5"
+                                                         Style="{StaticResource iucDetailTextBoxStyle}"
+                                                         Text="{Binding ElementName=detailColorTextBox, Path=Text}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Price"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupUpdateProductPriceTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"
+                                                                       Text="{Binding ElementName=detailPriceTextBox, Path=Text, Converter={StaticResource currencyToStringNumber}}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <StackPanel VerticalAlignment="Center"
+                                                    Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Category"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupUpdateProductCategoryComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      Style="{StaticResource iucComboBoxStyle}"
+                                                      SelectedIndex="{Binding ElementName=detailCategoryComboBox, Path=SelectedIndex, Mode=OneWay}"
+                                                      ItemsSource="{Binding ElementName=detailCategoryComboBox, Path=ItemsSource, Mode=OneWay}"
+                                                      DisplayMemberPath="CategoryName"
+                                                      SelectedValuePath="CategoryID"/>
+                                        </StackPanel>
+                                        <Grid Grid.Row="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Total"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupUpdateProductTotalTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"
+                                                                       Text="{Binding ElementName=detailTotalTextBox, Path=Text}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Sold"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupUpdateProductSoldTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"
+                                                                       Text="{Binding ElementName=detailSoldTextBox, Path=Text}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="2"
+                                                        Margin="5 0 5 0">
+                                                <TextBlock Text="Remain"
+                                                           Style="{StaticResource iucDetailTitleStyle}"/>
+                                                <helper:NumericTextBox x:Name="popupUpdateProductRemainTextBox"
+                                                                       Padding="5"
+                                                                       Style="{StaticResource iucNumericTextBoxStyle}"
+                                                                       Text="{Binding ElementName=detailRemainTextBox, Path=Text}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <StackPanel Grid.Row="5"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Description"
+                                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupUpdateProductDescriptionTextBox"
+                                                     TextWrapping="Wrap"
+                                                     Height="100"
+                                                     VerticalScrollBarVisibility="Visible"
+                                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                                     Text="{Binding ElementName=detailDescriptionTextBox, Path=Text}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="6"
+                                                Content="UPDATE"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource iucAddUpdateButtonStyle}"
+                                                Command="{Binding UpdateProduct}"
+                                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Path Margin="0 0 10 0"
+                              Stroke="#aaaaaa"
+                              StrokeThickness="2"
+                              Data="M3,0 V12 L0,15 L3,18 V30"/>
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="15"
+                                   Text="Actions"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <ListView Name="productListView"
+                              BorderThickness="0"
+                              Background="#ffffff"
+                              Focusable="False"
+                              SelectedIndex="0"
+                              ItemContainerStyle="{StaticResource iucProductListViewItemStyle}"
+                              ItemsSource="{Binding ElementName=categoryComboBox, Path=SelectedItem.Products, Mode=OneWay}"
+                              SelectedValuePath="ProductID">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Rows="6"
+                                             Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#ffffff"
+                                        BorderBrush="#aaaaaa"
+                                        BorderThickness="1"
+                                        CornerRadius="3">
+                                    <Grid Height="60">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="160"/>
+                                            <ColumnDefinition Width="84"/>
+                                            <ColumnDefinition Width="70"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Margin="10 5 5 5"
+                                                BorderBrush="#aaaaaa"
+                                                BorderThickness="0 0 1 0">
+                                            <StackPanel>
+                                                <TextBlock Style="{StaticResource iucProductListViewItemTitleStyle}"
+                                                           Text="No."/>
+                                                <TextBlock FontFamily="Arial"
+                                                           FontSize="14"
+                                                           Text="{Binding ProductID, Mode=OneWay}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                Margin="5"
+                                                BorderBrush="#aaaaaa"
+                                                BorderThickness="0 0 1 0">
+                                            <StackPanel>
+                                                <TextBlock Style="{StaticResource iucProductListViewItemTitleStyle}"
+                                                           Text="Name"/>
+                                                <TextBlock FontFamily="Arial"
+                                                           FontSize="14"
+                                                           Text="{Binding ProductName, Mode=OneWay}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Grid.Column="2"
+                                                VerticalAlignment="Center"
+                                                Margin="5"
+                                                BorderBrush="#aaaaaa"
+                                                BorderThickness="0 0 1 0">
+                                            <StackPanel>
+                                                <TextBlock Style="{StaticResource iucProductListViewItemTitleStyle}"
+                                                           Text="Color"/>
+                                                <TextBlock FontFamily="Arial"
+                                                           FontSize="14"
+                                                           Text="{Binding Color, Mode=OneWay}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Grid.Column="3"
+                                                VerticalAlignment="Center"
+                                                Margin="5"
+                                                BorderBrush="#aaaaaa"
+                                                BorderThickness="0 0 1 0">
+                                            <StackPanel>
+                                                <TextBlock Style="{StaticResource iucProductListViewItemTitleStyle}"
+                                                           Text="Price"/>
+                                                <TextBlock FontFamily="Arial"
+                                                           FontSize="14"
+                                                           Text="{Binding Price, StringFormat='#,#', Mode=OneWay}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Grid.Column="4"
+                                                VerticalAlignment="Center"
+                                                Margin="5 5 10 5"
+                                                BorderBrush="#aaaaaa">
+                                            <StackPanel>
+                                                <TextBlock Style="{StaticResource iucProductListViewItemTitleStyle}"
+                                                           Text="Quanity"/>
+                                                <TextBlock FontFamily="Arial"
+                                                           FontSize="14"
+                                                           Text="{Binding Remain, Mode=OneWay}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Effect>
+                            <DropShadowEffect Color="#dddddd"
+                                              BlurRadius="5"
+                                              ShadowDepth="0"/>
+                        </ListView.Effect>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding GetProductDetail}"
+                                                       CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding GetProductDetail}"
+                                                       CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="2"
+                               IsHitTestVisible="False"
+                               Foreground="#aaaaaa"
+                               FontFamily="Arial"
+                               FontWeight="Light"
+                               FontSize="24"
+                               Text="No products in this category"
+                               Visibility="{Binding ElementName=productListView, Path=HasItems, Mode=OneWay, Converter={StaticResource hasItemToHiddenText}}"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Margin="0 5 0 0"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                        <Button Margin="0 0 5 0"
+                                ToolTip="First page"
+                                Content="l&lt;"
+                                Style="{StaticResource iucNextPreviousPageButtonStyle}"
+                                Command="{Binding GoFirstPage}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                        <Button Margin="0 0 10 0"
+                                ToolTip="Previous page"
+                                Content="&lt;"
+                                Style="{StaticResource iucNextPreviousPageButtonStyle}"
+                                Command="{Binding GoPreviousPage}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   FontSize="15"
+                                   Text="{Binding model.pagingInfo.currentPage, Mode=OneWay}"/>
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   FontSize="15"
+                                   Text=" / "/>
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   FontSize="15"
+                                   Text="{Binding model.pagingInfo.totalPage, Mode=OneWay}"/>
+                        <Button Margin="10 0 0 0"
+                                ToolTip="Next page"
+                                Content="&gt;"
+                                Style="{StaticResource iucNextPreviousPageButtonStyle}"
+                                Command="{Binding GoNextPage}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                        <Button Margin="5 0 0 0"
+                                ToolTip="Last page"
+                                Content="&gt;l"
+                                Style="{StaticResource iucNextPreviousPageButtonStyle}"
+                                Command="{Binding GoLastPage}"
+                                CommandParameter="{Binding ElementName=inventoryUserControl, Mode=OneWay}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                        <TextBlock FontFamily="Arial"
+                                   FontSize="15"
+                                   Text="{Binding model.pagingInfo.filteredItem, Mode=OneWay}"/>
+                        <TextBlock FontFamily="Arial"
+                                   FontSize="15"
+                                   Text=" of "/>
+                        <TextBlock FontFamily="Arial"
+                                   FontSize="15"
+                                   Text="{Binding model.pagingInfo.totalItem, Mode=OneWay}"/>
+                        <TextBlock FontFamily="Arial"
+                                   FontSize="15"
+                                   Text=" products"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="10 10 0 10"
+                  Background="#ffffff">
+                <Grid.Effect>
+                    <DropShadowEffect Color="#dddddd"
+                                      BlurRadius="5"
+                                      ShadowDepth="0"/>
+                </Grid.Effect>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        Background="#333333">
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="#ffffff"
+                               FontFamily="Arial"
+                               FontWeight="SemiBold"
+                               FontSize="20"
+                               Text="Detail"/>
+                </Border>
+                <Grid Grid.Row="1"
+                      Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="ID"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailIdTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.ProductID, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="SKU"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailSkuTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.SKU, Mode=OneWay}"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="1"
+                                Margin="5 0 5 0">
+                        <TextBlock Text="Name"
+                                   Style="{StaticResource iucDetailTitleStyle}"/>
+                        <TextBox x:Name="detailNameTextBox"
+                                 IsEnabled="False"
+                                 Style="{StaticResource iucDetailTextBoxStyle}"
+                                 Text="{Binding ElementName=productListView, Path=SelectedItem.ProductName, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="Color"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailColorTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.Color, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="Price"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailPriceTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.Price, StringFormat='#,#', Mode=OneWay}"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="3"
+                                Margin="5 0 5 0">
+                        <TextBlock Text="Category"
+                                   Style="{StaticResource iucDetailTitleStyle}"/>
+                        <ComboBox x:Name="detailCategoryComboBox"
+                                  HorizontalAlignment="Stretch"
+                                  IsEnabled="False"
+                                  Height="30"
+                                  Style="{StaticResource iucComboBoxStyle}"
+                                  SelectedIndex="{Binding ElementName=categoryComboBox, Path=SelectedIndex, Mode=OneWay}"
+                                  ItemsSource="{Binding ElementName=categoryComboBox, Path=ItemsSource, Mode=OneWay}"
+                                  DisplayMemberPath="CategoryName"
+                                  SelectedValuePath="CategoryID"/>
+                    </StackPanel>
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="Total"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailTotalTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.Total, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="Sold"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailSoldTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.Sold, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2"
+                                    Margin="5 0 5 0">
+                            <TextBlock Text="Remain"
+                                       Style="{StaticResource iucDetailTitleStyle}"/>
+                            <TextBox x:Name="detailRemainTextBox"
+                                     IsEnabled="False"
+                                     Style="{StaticResource iucDetailTextBoxStyle}"
+                                     Text="{Binding ElementName=productListView, Path=SelectedItem.Remain, Mode=OneWay}"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="5"
+                               Margin="5 0 5 0">
+                        <TextBlock Text="Description"
+                                   Style="{StaticResource iucDetailTitleStyle}"/>
+                        <TextBox x:Name="detailDescriptionTextBox"
+                                 IsEnabled="False"
+                                 TextWrapping="Wrap"
+                                 Height="80"
+                                 VerticalScrollBarVisibility="Visible"
+                                 Style="{StaticResource iucDetailTextBoxStyle}"
+                                 Text="{Binding ElementName=productListView, Path=SelectedItem.Description, Mode=OneWay}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6"
+                                Margin="5 0 5 0">
+                        <TextBlock Text="Images"
+                                   Style="{StaticResource iucDetailTitleStyle}"/>
+                        <ListView x:Name="imageListView"
+                                  BorderThickness="0 1 0 1"
+                                  BorderBrush="#aaaaaa"
+                                  Focusable="False"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                  ItemContainerStyle="{StaticResource iucImageListViewItemStyle}"
+                                  ItemsSource="{Binding ElementName=productListView, Path=SelectedItem.Images, Mode=OneWay}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                           Stretch="Uniform"
+                                           Width="150"
+                                           Source="{Binding ImageData, Mode=OneWay}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,316 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helper="clr-namespace:MyStore.Helpers">
+    <!--Converter-->
+    <helper:IntToChosenBox x:Key="intToChosenBox"/>
+    <helper:IntToCornfimationBox x:Key="intToCornfimationBox"/>
+    <!--Scroll Thumb-->
+    <Style x:Key="mmbScrollThumbStyle"
+           TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid x:Name="grid">
+                        <Rectangle x:Name="retangle"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Fill="Transparent"
+                                   Width="Auto"
+                                   Height="Auto"/>
+                        <Border x:Name="border"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                Width="Auto"
+                                Height="Auto"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag"
+                                 Value="Horizontal">
+                            <Setter TargetName="border"
+                                    Property="Width"
+                                    Value="Auto"/>
+                            <Setter TargetName="border"
+                                    Property="Height"
+                                    Value="7"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Type ScrollBar}"
+           TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False"/>
+        <Setter Property="Foreground"
+                Value="#111111"/>
+        <Setter Property="Width"
+                Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="gridRoot"
+                          HorizontalAlignment="Right"
+                          Background="{x:Null}"
+                          Width="5">
+                        <Track x:Name="PART_Track"
+                               Grid.Row="0"
+                               IsDirectionReversed="True"
+                               Focusable="False">
+                            <Track.Thumb >
+                                <Thumb x:Name="thumb"
+                                       Background="{TemplateBinding Foreground}"
+                                       Style="{StaticResource mmbScrollThumbStyle}"/>
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="pageUp"
+                                              Focusable="False"
+                                              Opacity="0"
+                                              Command="ScrollBar.PageDownCommand"/>
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="pageDown"
+                                              Focusable="False"
+                                              Opacity="0"
+                                              Command="ScrollBar.PageUpCommand"/>
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="thumb"
+                                 Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="thumb"
+                                    Property="Background"
+                                    Value="#111111"/>
+                        </Trigger>
+                        <Trigger SourceName="thumb"
+                                 Property="IsDragging"
+                                 Value="True">
+                            <Setter TargetName="thumb"
+                                    Property="Background"
+                                    Value="#000000"/>
+                        </Trigger>
+                        <Trigger SourceName="thumb"
+                                 Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="thumb"
+                                    Property="Visibility"
+                                    Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Orientation"
+                                 Value="Horizontal">
+                            <Setter TargetName="gridRoot"
+                                    Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Track"
+                                    Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Width"
+                                    Value="Auto"/>
+                            <Setter Property="Height"
+                                    Value="12"/>
+                            <Setter TargetName="thumb"
+                                    Property="Tag"
+                                    Value="Horizontal"/>
+                            <Setter TargetName="pageDown"
+                                    Property="Command"
+                                    Value="ScrollBar.PageLeftCommand"/>
+                            <Setter TargetName="pageUp"
+                                    Property="Command"
+                                    Value="ScrollBar.PageRightCommand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--OK Button-->
+    <Style x:Key="mmbOkButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="IsDefault"
+                Value="True"/>
+        <Setter Property="Focusable"
+                Value="False"/>
+        <Setter Property="Cursor"
+                Value="Hand"/>
+        <Setter Property="Width"
+                Value="56"/>
+        <Setter Property="Height"
+                Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="#c2080f"
+                            CornerRadius="5">
+                        <TextBlock Padding="0 8 0 0"
+                                   Foreground="#ffffff"
+                                   TextAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   Text="OK"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#666666"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#d2080f"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="False"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#a2080f"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Yes Button-->
+    <Style x:Key="mmbYesButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="IsDefault"
+                Value="True"/>
+        <Setter Property="Focusable"
+                Value="False"/>
+        <Setter Property="Cursor"
+                Value="Hand"/>
+        <Setter Property="Width"
+                Value="56"/>
+        <Setter Property="Height"
+                Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="#c2080f"
+                            CornerRadius="5">
+                        <TextBlock Padding="0 8 0 0"
+                                   Foreground="#ffffff"
+                                   TextAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   Text="Yes"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#666666"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#d2080f"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="False"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#a2080f"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--No Button-->
+    <Style x:Key="mmbNoButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="IsCancel"
+                Value="True"/>
+        <Setter Property="Focusable"
+                Value="False"/>
+        <Setter Property="Cursor"
+                Value="Hand"/>
+        <Setter Property="Width"
+                Value="56"/>
+        <Setter Property="Height"
+                Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="#111111"
+                            CornerRadius="5">
+                        <TextBlock Padding="0 8 0 0"
+                                   Foreground="#ffffff"
+                                   TextAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   Text="No"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#444444"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                    Property="Background"
+                                    Value="#222222"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="False"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#000000"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

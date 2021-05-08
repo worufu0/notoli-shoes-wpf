@@ -1,0 +1,646 @@
+﻿<UserControl x:Class="MyStore.Views.PurchasesUserControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyStore.Views"
+             xmlns:viewModel="clr-namespace:MyStore.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:helper="clr-namespace:MyStore.Helpers"
+             mc:Ignorable="d" 
+             x:Name="purchasesUserControl"
+             Width="1047"
+             Height="720">
+    <UserControl.DataContext>
+        <viewModel:PurchasesUserControlViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary Source="PurchasesUserControlViewResource.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center"
+                   Margin="20 0 0 0"
+                   Foreground="#3a3a3a"
+                   FontFamily="Arial"
+                   FontWeight="Bold"
+                   FontSize="36"
+                   Text="Purchases"/>
+        <Grid Grid.Row="1"
+              Margin="20 0 20 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel HorizontalAlignment="Left"
+                                Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Text="Purchases of"/>
+                        <ComboBox x:Name="customerComboBox"
+                                  Margin="10 0 0 0"
+                                  SelectedIndex="0"
+                                  Width="200"
+                                  Style="{StaticResource pucComboBoxStyle}"
+                                  ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                  ItemsSource="{Binding model.customerTable, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                  DisplayMemberPath="CustomerName"
+                                  SelectedValuePath="CustomerID">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding ReloadLoadProducts}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ReloadLoadProducts}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
+                    <Grid HorizontalAlignment="Right">
+                        <helper:NumericTextBox x:Name="searchBox"
+                                               Style="{StaticResource pucSearchBoxStyle}">
+
+                            <TextBox.Effect>
+                                <DropShadowEffect x:Name="effect"
+                                                  Color="#dddddd"
+                                                  BlurRadius="5"
+                                                  ShadowDepth="1"/>
+                            </TextBox.Effect>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding SearchByID}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <i:InvokeCommandAction Command="{Binding OnlyNumber}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </helper:NumericTextBox>
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Foreground="#aaaaaa"
+                                   Margin="5 0 0 0"
+                                   IsHitTestVisible="False"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   FontSize="14"
+                                   Text="Search by purchase ID">
+                            <TextBlock.Visibility>
+                                <MultiBinding Converter="{StaticResource focusAndEmptyToVisibilityConverter}">
+                                    <Binding ElementName="searchBox"
+                                             Path="IsFocused"/>
+                                    <Binding ElementName="searchBox"
+                                             Path="Text.IsEmpty"/>
+                                </MultiBinding>
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Background="#dddddd">
+                    <StackPanel Margin="10 0 0 0"
+                                HorizontalAlignment="Left"
+                                Orientation="Horizontal"
+                                Height="30">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="14"
+                                   Text="Filter by order date"/>
+                        <TextBlock Margin="10 0 0 0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   Text="From"/>
+                        <DatePicker x:Name="filterFromDatePicker"
+                                    Margin="5 0 0 0"
+                                    Style="{StaticResource pucDetailDatePickerStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding FilterByOrderDate}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   Text="To"/>
+                        <DatePicker x:Name="filterToDatePicker"
+                                    Margin="5 0 0 0"
+                                    Style="{StaticResource pucDetailDatePickerStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding FilterByOrderDate}"
+                                                           CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
+                    </StackPanel>
+                    <StackPanel Margin="0 0 10 0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Height="30">
+                        <ToggleButton x:Name="addPurchaseToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Add purchase"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource pucAddButtonStyle}"
+                                      Command="{Binding PopupAddPurchase}"
+                                      CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="addPurchasePopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="330">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Add new purchase"/>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Status"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupAddPurchaseStatusComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      ItemsSource="{Binding model.statusTable, Mode=OneWay}"
+                                                      DisplayMemberPath="StatusName"
+                                                      SelectedValuePath="StatusID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Place"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupAddPurchasePlaceTextBox"
+                                                     Padding="5"
+                                                     Style="{StaticResource pucDetailTextBoxStyle}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Received date"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <DatePicker x:Name="popupAddPurchaseReceivedDatePicker"
+                                                        Style="{StaticResource pucDetailDatePickerStyle}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="4"
+                                                Content="ADD"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource pucAddUpdateButtonStyle}"
+                                                Command="{Binding AddPurchase}"
+                                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Button x:Name="deletePurchaseToggleButton"
+                                Margin="0 0 10 0"
+                                ToolTip="Delete purchase"
+                                Width="20"
+                                Height="20"
+                                Style="{StaticResource pucDeleteButtonStyle}"
+                                Command="{Binding DeletePurchase}"
+                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                        <ToggleButton x:Name="updatePurchaseToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Update purchase"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource pucEditButtonStyle}"
+                                      Command="{Binding PopupUpdatePurchase}"
+                                      CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="updatePurchasePopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="330">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Update purchase"/>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Status"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupUpdatePurchaseStatusComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      SelectedItem="{Binding ElementName=purchaseDataGrid, Path=SelectedItem.Status, Mode=OneWay}"
+                                                      ItemsSource="{Binding model.statusTable, Mode=OneWay}"
+                                                      DisplayMemberPath="StatusName"
+                                                      SelectedValuePath="StatusID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Place"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <TextBox x:Name="popupUpdatePurchasePlaceTextBox"
+                                                     Padding="5"
+                                                     Style="{StaticResource pucDetailTextBoxStyle}"
+                                                     Text="{Binding ElementName=purchaseDataGrid, Path=SelectedItem.PurchasePlace, Mode=OneWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Received date"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <DatePicker x:Name="popupUpdatePurchaseReceivedDatePicker"
+                                                        Style="{StaticResource pucDetailDatePickerStyle}"
+                                                        SelectedDate="{Binding ElementName=purchaseDataGrid, Path=SelectedItem.PurchaseReceivedDate, Mode=OneWay}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="4"
+                                                Content="UPDATE"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource pucAddUpdateButtonStyle}"
+                                                Command="{Binding UpdatePurchase}"
+                                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Path Margin="0 0 10 0"
+                              Stroke="#aaaaaa"
+                              StrokeThickness="2"
+                              Data="M3,0 V12 L0,15 L3,18 V30"/>
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="15"
+                                   Text="Actions"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <DataGrid x:Name="purchaseDataGrid"
+                              Margin="0 0 0 10"
+                              ItemsSource="{Binding ElementName=customerComboBox, Path=SelectedItem.Purchases, Mode=OneWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                Width="*"
+                                                Binding="{Binding PurchaseID, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Order"
+                                                Width="3*"
+                                                Binding="{Binding PurchaseDate, StringFormat={}{0:dd/MM/yyyy}, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Expected delivery"
+                                                Width="4*"
+                                                Binding="{Binding PurchaseExpectedDeliveryDate, StringFormat={}{0:dd/MM/yyyy}, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Received"
+                                                Width="3*"
+                                                Binding="{Binding PurchaseReceivedDate, StringFormat={}{0:dd/MM/yyyy}, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Place"
+                                                Width="3*"
+                                                Binding="{Binding PurchasePlace, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Total"
+                                                Width="3*"
+                                                Binding="{Binding PurchaseTotal, StringFormat='#,#', Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Status"
+                                                Width="4*"
+                                                Binding="{Binding Status.StatusName, Mode=OneWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="2"
+                               IsHitTestVisible="False"
+                               Foreground="#aaaaaa"
+                               FontFamily="Arial"
+                               FontWeight="Light"
+                               FontSize="24"
+                               Text="No purchases"
+                               Visibility="{Binding ElementName=purchaseDataGrid, Path=HasItems, Mode=OneWay, Converter={StaticResource hasItemToHiddenText}}"/>
+                    <Grid.Effect>
+                        <DropShadowEffect Color="#dddddd"
+                                          BlurRadius="5"
+                                          ShadowDepth="0"/>
+                    </Grid.Effect>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="10 10 0 10"
+                  Background="#ffffff">
+                <Grid.Effect>
+                    <DropShadowEffect Color="#dddddd"
+                                      BlurRadius="5"
+                                      ShadowDepth="0"/>
+                </Grid.Effect>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        Background="#333333">
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="#ffffff"
+                               FontFamily="Arial"
+                               FontWeight="SemiBold"
+                               FontSize="20"
+                               Text="Detail"/>
+                </Border>
+                <Grid Grid.Row="1"
+                      Background="#dddddd">
+                    <StackPanel Margin="0 0 10 0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Height="30">
+                        <ToggleButton x:Name="addPurchaseDetailToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Add purchase detail"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource pucAddButtonStyle}"
+                                      Command="{Binding PopupAddPurchaseDetail}"
+                                      CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="addPurchaseDetailPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="300">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Add purchase detail"/>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Category"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupAddPurchaseDetailCategoryComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      ItemsSource="{Binding model.categoryTable, Mode=OneWay}"
+                                                      DisplayMemberPath="CategoryName"
+                                                      SelectedValuePath="CategoryID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Product name"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupAddPurchaseDetailProductComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      ItemsSource="{Binding ElementName=popupAddPurchaseDetailCategoryComboBox, Path=SelectedItem.Products, Mode=OneWay}"
+                                                      DisplayMemberPath="ProductName"
+                                                      SelectedValuePath="ProductID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Quantity"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <helper:NumericTextBox x:Name="popupAddPurchaseDetailQuantityTextBox"
+                                                                   Padding="5"
+                                                                   Style="{StaticResource pucDetailTextBoxStyle}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="4"
+                                                Content="ADD"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource pucAddUpdateButtonStyle}"
+                                                Command="{Binding AddPurchaseDetail}"
+                                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Button Margin="0 0 10 0"
+                                ToolTip="Delete purchase detail"
+                                Width="20"
+                                Height="20"
+                                Style="{StaticResource pucDeleteButtonStyle}"
+                                Command="{Binding DeletePurchaseDetail}"
+                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                        <ToggleButton x:Name="updatePurchaseDetailToggleButton"
+                                      Margin="0 0 10 0"
+                                      ToolTip="Update purchase detail"
+                                      Width="20"
+                                      Height="20"
+                                      Style="{StaticResource pucEditButtonStyle}"
+                                      Command="{Binding PopupUpdatePurchaseDetail}"
+                                      CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}">
+                            <helper:NonTopmostPopup x:Name="updatePurchaseDetailPopup"
+                                                    AllowsTransparency="True"
+                                                    StaysOpen="True"
+                                                    PopupAnimation="Fade"
+                                                    Placement="Mouse">
+                                <Border Margin="20"
+                                        Background="#ffffff"
+                                        BorderBrush="#000000"
+                                        BorderThickness="1 5 1 1"
+                                        CornerRadius="5"
+                                        Width="250"
+                                        Height="300">
+                                    <Grid Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#c2080f"
+                                                   FontFamily="Arial"
+                                                   FontWeight="Bold"
+                                                   FontSize="20"
+                                                   Grid.Row="0"
+                                                   Text="Update purchase detail"/>
+                                        <StackPanel Grid.Row="1"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Category"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupUpdatePurchaseDetailCategoryComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      ItemsSource="{Binding model.categoryTable, Mode=OneWay}"
+                                                      SelectedItem="{Binding ElementName=purchaseDetailDataGrid, Path=SelectedItem.Product.Category, Mode=OneWay}"
+                                                      DisplayMemberPath="CategoryName"
+                                                      SelectedValuePath="CategoryID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Product name"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <ComboBox x:Name="popupUpdatePurchaseDetailProductComboBox"
+                                                      HorizontalAlignment="Stretch"
+                                                      Padding="5"
+                                                      SelectedIndex="0"
+                                                      Style="{StaticResource pucComboBoxStyle}"
+                                                      ItemContainerStyle="{StaticResource pucComboBoxItemStyle}"
+                                                      ItemsSource="{Binding ElementName=popupUpdatePurchaseDetailCategoryComboBox, Path=SelectedItem.Products, Mode=OneWay}"
+                                                      SelectedItem="{Binding ElementName=purchaseDetailDataGrid, Path=SelectedItem.Product, Mode=OneWay}"
+                                                      DisplayMemberPath="ProductName"
+                                                      SelectedValuePath="ProductID"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="3"
+                                                    Margin="5 0 5 0">
+                                            <TextBlock Text="Quantity"
+                                                       Style="{StaticResource pucDetailTitleStyle}"/>
+                                            <helper:NumericTextBox x:Name="popupUpdatePurchaseDetailQuantityTextBox"
+                                                                   Padding="5"
+                                                                   Style="{StaticResource pucDetailTextBoxStyle}"
+                                                                   Text="{Binding ElementName=purchaseDetailDataGrid, Path=SelectedItem.PurchaseDetailQuantity, Mode=OneWay}"/>
+                                        </StackPanel>
+                                        <Button Grid.Row="4"
+                                                Content="UPDATE"
+                                                Width="100"
+                                                Height="30"
+                                                Style="{StaticResource pucAddUpdateButtonStyle}"
+                                                Command="{Binding UpdatePurchaseDetail}"
+                                                CommandParameter="{Binding ElementName=purchasesUserControl, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </helper:NonTopmostPopup>
+                        </ToggleButton>
+                        <Path Margin="0 0 10 0"
+                              Stroke="#aaaaaa"
+                              StrokeThickness="2"
+                              Data="M3,0 V12 L0,15 L3,18 V30"/>
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   FontSize="15"
+                                   Text="Actions"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <DataGrid x:Name="purchaseDetailDataGrid"
+                              ItemsSource="{Binding ElementName=purchaseDataGrid, Path=SelectedItem.PurchaseDetails, Mode=OneWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                Width="*"
+                                                Binding="{Binding PurchaseDetailID, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Product"
+                                                Width="4*"
+                                                Binding="{Binding Product.ProductName, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Quantity"
+                                                Width="2*"
+                                                Binding="{Binding PurchaseDetailQuantity, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Total"
+                                                Width="3*"
+                                                Binding="{Binding PurchaseDetailTotal, StringFormat='###,###,###', Mode=OneWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="2"
+                               IsHitTestVisible="False"
+                               Foreground="#aaaaaa"
+                               FontFamily="Arial"
+                               FontWeight="Light"
+                               FontSize="24"
+                               Text="No details"
+                               Visibility="{Binding ElementName=purchaseDetailDataGrid, Path=HasItems, Mode=OneWay, Converter={StaticResource hasItemToHiddenText}}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

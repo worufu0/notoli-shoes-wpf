@@ -1,0 +1,187 @@
+﻿<Window x:Class="MyStore.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:MyStore.ViewModels"
+        xmlns:helper="clr-namespace:MyStore.Helpers"
+        mc:Ignorable="d"
+        x:Name="loginWindow"
+        WindowStyle="None"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#ffffff"
+        Width="1280"
+        Height="720">
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary Source="LoginViewResource.xaml"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt"
+                    Key="F4"
+                    Command="{Binding CloseWindow}"
+                    CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+    </Window.InputBindings>
+    <Border BorderBrush="#cccccc"
+            BorderThickness="1">
+        <Grid x:Name="mainGrid">
+            <Path HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Stroke="Transparent"
+                  Data="M0,0 H500 Q620,530 200,720 H0">
+                <Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#cccccc"
+                                      Offset="0.5"/>
+                        <GradientStop Color="#888888"
+                                      Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Ellipse HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Margin="100 0 0 0"
+                     Fill="#c2080f"
+                     Width="500"
+                     Height="500"/>
+            <Image HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Margin="60 -40 0 0"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Stretch="Uniform"
+                   Source="Assets/Images/lw_image.png"
+                   Width="600"
+                   Height="600">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="80"/>
+                </Image.Effect>
+            </Image>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Image x:Name="logo"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           Stretch="Uniform"
+                           Source="Assets/Images/lw_logo.png"
+                           Width="100"
+                           Height="100"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="0 0 0 15"
+                               Foreground="#3a3a3a"
+                               FontFamily="Arial"
+                               FontWeight="DemiBold"
+                               FontSize="60"
+                               Text="Sign in"/>
+                    <Grid Margin="0 10 0 10">
+                        <TextBox x:Name="usernameBox"
+                                 Style="{StaticResource lwUsernameBoxStyle}"
+                                 Text="{Binding model.username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Space"
+                                            Command="{Binding BlockSpace}"
+                                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <TextBlock x:Name="usernameHint"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="50 0 0 0"
+                                   Style="{StaticResource lwHintTextBlockStyle}"
+                                   Text="Username">
+                            <TextBlock.Visibility>
+                                <MultiBinding Converter="{StaticResource focusAndEmptyToVisibilityConverter}">
+                                    <Binding ElementName="usernameBox"
+                                             Path="IsFocused"/>
+                                    <Binding ElementName="usernameBox"
+                                             Path="Text.IsEmpty"/>
+                                </MultiBinding>
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                    </Grid>
+                    <Grid Margin="0 10 0 10">
+                        <PasswordBox x:Name="passwordBox"
+                                     helper:PasswordBoxExtension.IsActive="True"
+                                     helper:PasswordBoxExtension.Attach="True"
+                                     Style="{StaticResource lwPasswordBoxStyle}">
+                            <PasswordBox.InputBindings>
+                                <KeyBinding Key="Space"
+                                            Command="{Binding BlockSpace}"
+                                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                            </PasswordBox.InputBindings>
+                        </PasswordBox>
+                        <TextBlock x:Name="passwordHint"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="50 0 0 0"
+                                   Style="{StaticResource lwHintTextBlockStyle}"
+                                   Text="Password">
+                            <TextBlock.Visibility>
+                                <MultiBinding Converter="{StaticResource focusAndEmptyToVisibilityConverter}">
+                                    <Binding ElementName="passwordBox"
+                                             Path="IsFocused"/>
+                                    <Binding ElementName="passwordBox"
+                                             Path="(helper:PasswordBoxExtension.IsPasswordEmpty)"/>
+                                </MultiBinding>
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                    </Grid>
+                    <StackPanel Margin="15 0 0 0"
+                                Orientation="Horizontal">
+                        <CheckBox x:Name="rememberBox"
+                                  Style="{StaticResource lwRememberMeCheckBoxStyle}"
+                                  IsChecked="{Binding model.rememberMe, Mode=TwoWay}"/>
+                        <TextBlock VerticalAlignment="Center"
+                                   Foreground="#3a3a3a"
+                                   FontFamily="Arial"
+                                   FontSize="16"
+                                   Text="Remember me"/>
+                    </StackPanel>
+                    <Button x:Name="loginButton"
+                            Margin="0 20 0 10"
+                            Style="{StaticResource lwLoginButtonStyle}"
+                            Command="{Binding Login}"
+                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}">
+                    </Button>
+                    <Button x:Name="forgotPasswordButton"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource lwForgotPasswordButtonStyle}"
+                            Command="{Binding ForgotPassword}"
+                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="0 120 0 -120"
+                               Foreground="#999999"
+                               FontFamily="Arial"
+                               FontSize="16"
+                               Text="{Binding model.appVersion, Mode=OneWay}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0 5 5 0"
+                            Orientation="Horizontal">
+                    <Button Margin="0 0 5 0"
+                            Style="{StaticResource lwChangeDataBaseButtonStyle}"
+                            Command="{Binding OpenChangeDatabaseWindow}"
+                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                    <Button Style="{StaticResource lwMinimizeButtonStyle}"
+                            Command="{Binding MinimizeWindow}"
+                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                    <Button Style="{StaticResource lwCloseButtonStyle}"
+                            Command="{Binding CloseWindow}"
+                            CommandParameter="{Binding ElementName=loginWindow, Mode=OneWay}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

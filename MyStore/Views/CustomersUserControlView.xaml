@@ -1,0 +1,301 @@
+﻿<UserControl x:Class="MyStore.Views.CustomersUserControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyStore.Views"
+             xmlns:viewModel="clr-namespace:MyStore.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:helper="clr-namespace:MyStore.Helpers"
+             mc:Ignorable="d" 
+             x:Name="customersUserControl"
+             Width="1047"
+             Height="720">
+    <UserControl.DataContext>
+        <viewModel:CustomerUserControlViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary Source="CustomersUserControlViewResource.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center"
+                   Margin="20 0 0 0"
+                   Foreground="#3a3a3a"
+                   FontFamily="Arial"
+                   FontWeight="Bold"
+                   FontSize="36"
+                   Text="Customers"/>
+        <Grid Grid.Row="1"
+              Margin="20 0 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Background="#dddddd">
+                <Grid HorizontalAlignment="Left"
+                      Margin="10 0 0 0">
+                    <TextBox x:Name="searchBox"
+                             Style="{StaticResource cucSearchBoxStyle}">
+                        <TextBox.Effect>
+                            <DropShadowEffect x:Name="effect"
+                                              Color="#dddddd"
+                                              BlurRadius="5"
+                                              ShadowDepth="1"/>
+                        </TextBox.Effect>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding SearchByName}"
+                                                       CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <TextBlock HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Foreground="#aaaaaa"
+                               Margin="5 0 0 0"
+                               IsHitTestVisible="False"
+                               FontFamily="Arial"
+                               FontStyle="Italic"
+                               FontSize="15"
+                               Text="Search by customer name">
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource focusAndEmptyToVisibilityConverter}">
+                                <Binding ElementName="searchBox"
+                                         Path="IsFocused"/>
+                                <Binding ElementName="searchBox"
+                                         Path="Text.IsEmpty"/>
+                            </MultiBinding>
+                        </TextBlock.Visibility>
+                    </TextBlock>
+                </Grid>
+                <StackPanel Margin="0 0 10 0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Height="30">
+                    <ToggleButton x:Name="addCustomerToggleButton"
+                                  Margin="0 0 10 0"
+                                  ToolTip="Add customer"
+                                  Width="26"
+                                  Height="26"
+                                  Style="{StaticResource cucAddButtonStyle}"
+                                  Command="{Binding PopupAddCustomer}"
+                                  CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}">
+                        <helper:NonTopmostPopup x:Name="addCustomerPopup"
+                                                AllowsTransparency="True"
+                                                StaysOpen="True"
+                                                PopupAnimation="Fade"
+                                                Placement="Mouse">
+                            <Border Margin="20"
+                                    Background="#ffffff"
+                                    BorderBrush="#000000"
+                                    BorderThickness="1 5 1 1"
+                                    CornerRadius="5"
+                                    Width="250"
+                                    Height="300">
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="#c2080f"
+                                               FontFamily="Arial"
+                                               FontWeight="Bold"
+                                               FontSize="20"
+                                               Grid.Row="0"
+                                               Text="Add new customer"/>
+                                    <StackPanel Grid.Row="1"
+                                                Margin="5 0 5 0">
+                                        <TextBlock Text="Name"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <TextBox x:Name="popupAddCustomerNameTextBox"
+                                                 Padding="5"
+                                                 Style="{StaticResource cucDetailTextBoxStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2"
+                                          Margin="5 0 5 0">
+                                        <TextBlock Text="Address"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <TextBox x:Name="popupAddCustomerAddressTextBox"
+                                                 Padding="5"
+                                                 Style="{StaticResource cucDetailTextBoxStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="3"
+                                                Margin="5 0 5 0">
+                                        <TextBlock Text="Telephone number"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <helper:NumericTextBox x:Name="popupAddCustomerTelTextBox"
+                                                               Padding="5"
+                                                               Style="{StaticResource cucDetailTextBoxStyle}"/>
+                                    </StackPanel>
+                                    <Button Grid.Row="4"
+                                            Content="ADD"
+                                            Width="100"
+                                            Height="30"
+                                            Style="{StaticResource cucAddUpdateButtonStyle}"
+                                            Command="{Binding AddCustomer}"
+                                            CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}"/>
+                                </Grid>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                </Border.Effect>
+                            </Border>
+                        </helper:NonTopmostPopup>
+                    </ToggleButton>
+                    <Button x:Name="deleteCustomerToggleButton"
+                            Margin="0 0 10 0"
+                            ToolTip="Delete customer"
+                            Width="26"
+                            Height="26"
+                            Style="{StaticResource cucDeleteButtonStyle}"
+                            Command="{Binding DeleteCustomer}"
+                            CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}"/>
+                    <ToggleButton x:Name="updateCustomerToggleButton"
+                                  Margin="0 0 10 0"
+                                  ToolTip="Update customer"
+                                  Width="26"
+                                  Height="26"
+                                  Style="{StaticResource cucEditButtonStyle}"
+                                  Command="{Binding PopupUpdateCustomer}"
+                                  CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}">
+                        <helper:NonTopmostPopup x:Name="updateCustomerPopup"
+                                                AllowsTransparency="True"
+                                                StaysOpen="True"
+                                                PopupAnimation="Fade"
+                                                Placement="Mouse">
+                            <Border Margin="20"
+                                    Background="#ffffff"
+                                    BorderBrush="#000000"
+                                    BorderThickness="1 5 1 1"
+                                    CornerRadius="5"
+                                    Width="250"
+                                    Height="300">
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="#c2080f"
+                                               FontFamily="Arial"
+                                               FontWeight="Bold"
+                                               FontSize="20"
+                                               Grid.Row="0"
+                                               Text="Update customer"/>
+                                    <StackPanel Grid.Row="1"
+                                                Margin="5 0 5 0">
+                                        <TextBlock Text="Name"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <TextBox x:Name="popupUpdateCustomerNameTextBox"
+                                                 Padding="5"
+                                                 Style="{StaticResource cucDetailTextBoxStyle}"
+                                                 Text="{Binding ElementName=customerDataGrid, Path=SelectedItem.CustomerName}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2"
+                                          Margin="5 0 5 0">
+                                        <TextBlock Text="Address"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <TextBox x:Name="popupUpdateCustomerAddressTextBox"
+                                                 Padding="5"
+                                                 Style="{StaticResource cucDetailTextBoxStyle}"
+                                                 Text="{Binding ElementName=customerDataGrid, Path=SelectedItem.CustomerAddress}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="3"
+                                                Margin="5 0 5 0">
+                                        <TextBlock Text="Telephone number"
+                                                   Style="{StaticResource cucDetailTitleStyle}"/>
+                                        <helper:NumericTextBox x:Name="popupUpdateCustomerTelTextBox"
+                                                               Padding="5"
+                                                               Style="{StaticResource cucDetailTextBoxStyle}"
+                                                               Text="{Binding ElementName=customerDataGrid, Path=SelectedItem.CustomerTel}"/>
+                                    </StackPanel>
+                                    <Button Grid.Row="4"
+                                            Content="UPDATE"
+                                            Width="100"
+                                            Height="30"
+                                            Style="{StaticResource cucAddUpdateButtonStyle}"
+                                            Command="{Binding UpdateCustomer}"
+                                            CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}"/>
+                                </Grid>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#000000"
+                                                          BlurRadius="10"
+                                                          ShadowDepth="0"/>
+                                </Border.Effect>
+                            </Border>
+                        </helper:NonTopmostPopup>
+                    </ToggleButton>
+                    <Path Margin="0 0 10 0"
+                          Stroke="#aaaaaa"
+                          StrokeThickness="2"
+                          Data="M3,0 V12 L0,15 L3,18 V30"/>
+                    <TextBlock VerticalAlignment="Center"
+                               FontFamily="Arial"
+                               FontWeight="Bold"
+                               FontSize="17"
+                               Text="Actions"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <DataGrid x:Name="customerDataGrid"
+                          ItemsSource="{Binding model.customerTable, Mode=OneWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="No."
+                                            Width="*"
+                                            IsReadOnly="True"
+                                            Binding="{Binding CustomerID}"/>
+                        <DataGridTextColumn Header="Full name"
+                                        Width="5*"
+                                        Binding="{Binding CustomerName}"/>
+                        <DataGridTextColumn Header="Address"
+                                            Width="6*"
+                                            Binding="{Binding CustomerAddress}"/>
+                        <DataGridTextColumn Header="Telephone number"
+                                            Width="4*"
+                                            Binding="{Binding CustomerTel}"/>
+                        <DataGridTemplateColumn Header="Purchases"
+                                                Width="2*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource cucViewPurchasesButtonStyle}"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.ViewPurchases}"
+                                            CommandParameter="{Binding ElementName=customersUserControl, Mode=OneWay}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Grid.Row="2"
+                           IsHitTestVisible="False"
+                           Foreground="#aaaaaa"
+                           FontFamily="Arial"
+                           FontWeight="Light"
+                           FontSize="24"
+                           Text="No customers"
+                           Visibility="{Binding ElementName=customerDataGrid, Path=HasItems, Mode=OneWay, Converter={StaticResource hasItemToHiddenText}}"/>
+            </Grid>
+            <Grid.Effect>
+                <DropShadowEffect Color="#dddddd"
+                                  BlurRadius="5"
+                                  ShadowDepth="0"/>
+            </Grid.Effect>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccountRole" Type="Byte" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" />
+    <Property Name="ImageProduct" Type="Int32" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Image_Product" FromRole="Image" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="SKU" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCategory" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Sold" Type="Int32" />
+    <Property Name="Remain" Type="Int32" />
+    <Property Name="Size" Type="Int16" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Product" FromRole="Product" ToRole="Image" />
+    <NavigationProperty Name="PurchaseDetails" Relationship="MyStoreModel.FK_PurchaseDetail_Product" FromRole="Product" ToRole="PurchaseDetail" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Byte" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK_Account_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="AccountRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="ImageProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Product" Association="Self.FK_Image_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <EntitySet Name="Customers" EntityType="MyStoreModel.Customer" />
+    <EntitySet Name="Purchases" EntityType="MyStoreModel.Purchase" />
+    <EntitySet Name="PurchaseDetails" EntityType="MyStoreModel.PurchaseDetail" />
+    <EntitySet Name="Status" EntityType="MyStoreModel.Status" />
+    <AssociationSet Name="FK_Purchase_Customer" Association="MyStoreModel.FK_Purchase_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Purchase" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseDetail_Product" Association="MyStoreModel.FK_PurchaseDetail_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="PurchaseDetail" EntitySet="PurchaseDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Status" Association="MyStoreModel.FK_Purchase_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Purchase" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseDetail_Purchase" Association="MyStoreModel.FK_PurchaseDetail_Purchase">
+      <End Role="Purchase" EntitySet="Purchases" />
+      <End Role="PurchaseDetail" EntitySet="PurchaseDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerTel" Type="Int32" />
+    <NavigationProperty Name="Purchases" Relationship="MyStoreModel.FK_Purchase_Customer" FromRole="Customer" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="PurchaseID" />
+    </Key>
+    <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+    <Property Name="PurchaseCustomer" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+    <Property Name="PurchaseExpectedDeliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="PurchaseReceivedDate" Type="DateTime" Precision="0" />
+    <Property Name="PurchasePlace" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseTotal" Type="Int32" />
+    <Property Name="PurchaseStatus" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="MyStoreModel.FK_Purchase_Customer" FromRole="Purchase" ToRole="Customer" />
+    <NavigationProperty Name="Status" Relationship="MyStoreModel.FK_Purchase_Status" FromRole="Purchase" ToRole="Status" />
+    <NavigationProperty Name="PurchaseDetails" Relationship="MyStoreModel.FK_PurchaseDetail_Purchase" FromRole="Purchase" ToRole="PurchaseDetail" />
+  </EntityType>
+  <EntityType Name="PurchaseDetail">
+    <Key>
+      <PropertyRef Name="PurchaseDetailID" />
+    </Key>
+    <Property Name="PurchaseDetailID" Type="Int32" Nullable="false" />
+    <Property Name="PurchaseDetailPurchase" Type="Int32" />
+    <Property Name="PurchaseDetailProduct" Type="Int32" />
+    <Property Name="PurchaseDetailQuantity" Type="Int32" />
+    <Property Name="PurchaseDetailTotal" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="MyStoreModel.FK_PurchaseDetail_Product" FromRole="PurchaseDetail" ToRole="Product" />
+    <NavigationProperty Name="Purchase" Relationship="MyStoreModel.FK_PurchaseDetail_Purchase" FromRole="PurchaseDetail" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Purchases" Relationship="MyStoreModel.FK_Purchase_Status" FromRole="Status" ToRole="Purchase" />
+  </EntityType>
+  <Association Name="FK_Purchase_Customer">
+    <End Type="MyStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="MyStoreModel.Purchase" Role="Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="PurchaseCustomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseDetail_Product">
+    <End Type="MyStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="MyStoreModel.PurchaseDetail" Role="PurchaseDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="PurchaseDetail">
+        <PropertyRef Name="PurchaseDetailProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Status">
+    <End Type="MyStoreModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="MyStoreModel.Purchase" Role="Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="PurchaseStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseDetail_Purchase">
+    <End Type="MyStoreModel.Purchase" Role="Purchase" Multiplicity="0..1" />
+    <End Type="MyStoreModel.PurchaseDetail" Role="PurchaseDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purchase">
+        <PropertyRef Name="PurchaseID" />
+      </Principal>
+      <Dependent Role="PurchaseDetail">
+        <PropertyRef Name="PurchaseDetailPurchase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

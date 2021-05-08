@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="907ea1bb56f0465b9f3b021addf88b9a" Name="Diagram1">
+        <EntityTypeShape EntityType="MyStoreModel.Account" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Image" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Role" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="MyStoreModel.FK_Account_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Image_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MyStoreModel.Customer" Width="1.5" PointX="5.375" PointY="5.5" />
+        <EntityTypeShape EntityType="MyStoreModel.Purchase" Width="1.5" PointX="7.625" PointY="5" />
+        <EntityTypeShape EntityType="MyStoreModel.PurchaseDetail" Width="1.5" PointX="9.875" PointY="3.375" />
+        <EntityTypeShape EntityType="MyStoreModel.Status" Width="1.5" PointX="5.375" PointY="8.75" />
+        <AssociationConnector Association="MyStoreModel.FK_Purchase_Customer" />
+        <AssociationConnector Association="MyStoreModel.FK_PurchaseDetail_Product" />
+        <AssociationConnector Association="MyStoreModel.FK_Purchase_Status" />
+        <AssociationConnector Association="MyStoreModel.FK_PurchaseDetail_Purchase" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

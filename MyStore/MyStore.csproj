@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0166E2B-2E8B-4558-9EF7-0C3E943DE95A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MyStore</RootNamespace>
+    <AssemblyName>MyStore</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo-mini.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=20.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.20.11.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.3.1\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Account.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Converter.cs" />
+    <Compile Include="Helpers\DataProvider.cs" />
+    <Compile Include="Helpers\MyMessageBoxServices.cs" />
+    <Compile Include="Helpers\NonTopmostPopup.cs" />
+    <Compile Include="Helpers\NumericTextBox.cs" />
+    <Compile Include="Helpers\PasswordBoxExtension.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Image.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BossModel.cs" />
+    <Compile Include="Models\ChangeDatabaseModel.cs" />
+    <Compile Include="Models\CustomersUserControlModel.cs" />
+    <Compile Include="Models\InventoryUserControlModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MyMessageBoxModel.cs" />
+    <Compile Include="Models\PagingInfoModel.cs" />
+    <Compile Include="Models\PurchasesUserControlModel.cs" />
+    <Compile Include="Models\SalesmanModel.cs" />
+    <Compile Include="Models\StatisticUserControlModel.cs" />
+    <Compile Include="MyStoreDatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyStoreDatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyStoreDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyStoreDatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyStoreDatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>MyStoreDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BossViewModel.cs" />
+    <Compile Include="ViewModels\ChangeDatabaseViewModel.cs" />
+    <Compile Include="ViewModels\CustomerUserControlViewModel.cs" />
+    <Compile Include="ViewModels\InventoryUserControlViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MyMessageBoxViewModel.cs" />
+    <Compile Include="ViewModels\PurchasesUserControlViewModel.cs" />
+    <Compile Include="ViewModels\SalesmanViewModel.cs" />
+    <Compile Include="ViewModels\StatisticUserControlViewModel.cs" />
+    <Compile Include="Views\PurchasesUserControlView.xaml.cs">
+      <DependentUpon>PurchasesUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BossView.xaml.cs">
+      <DependentUpon>BossView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangeDatabaseView.xaml.cs">
+      <DependentUpon>ChangeDatabaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomersUserControlView.xaml.cs">
+      <DependentUpon>CustomersUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeesUserControlView.xaml.cs">
+      <DependentUpon>EmployeesUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryUserControlView.xaml.cs">
+      <DependentUpon>InventoryUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyMessageBoxView.xaml.cs">
+      <DependentUpon>MyMessageBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesmanView.xaml.cs">
+      <DependentUpon>SalesmanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatisticUserControlView.xaml.cs">
+      <DependentUpon>StatisticUserControlView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="MyStoreDatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyStoreDatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MyStoreDatabaseModel.edmx.diagram">
+      <DependentUpon>MyStoreDatabaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\CustomersUserControlViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasesUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BossView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BossViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChangeDatabaseResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChangeDatabaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomersUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeesUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryUserControlViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyMessageBoxResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyMessageBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasesUserControlViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesmanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesmanViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatisticUserControlViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatisticUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Images\lw_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\cdw_close.png" />
+    <Resource Include="Views\Assets\Icons\lw_changedatabase.png" />
+    <Resource Include="Views\Assets\Icons\lw_checked.png" />
+    <Resource Include="Views\Assets\Icons\close.png" />
+    <Resource Include="Views\Assets\Icons\lw_hover.png" />
+    <Resource Include="Views\Assets\Icons\minimize.png" />
+    <Resource Include="Views\Assets\Icons\lw_password.png" />
+    <Resource Include="Views\Assets\Icons\lw_unchecked.png" />
+    <Resource Include="Views\Assets\Icons\lw_username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Images\lw_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\about_b.png" />
+    <Resource Include="Views\Assets\Icons\bills_b.png" />
+    <Resource Include="Views\Assets\Icons\settings_b.png" />
+    <Resource Include="Views\Assets\Icons\sv_profile_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\sv_sales_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\bv_employees_b.png" />
+    <Resource Include="Views\Assets\Icons\bv_customers_b.png" />
+    <Resource Include="Views\Assets\Icons\bv_inventory_b.png" />
+    <Resource Include="Views\Assets\Icons\bv_statistic_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\about_w.png" />
+    <Resource Include="Views\Assets\Icons\bills_w.png" />
+    <Resource Include="Views\Assets\Icons\settings_w.png" />
+    <Resource Include="Views\Assets\Icons\sv_profile_w.png" />
+    <Resource Include="Views\Assets\Icons\sv_sales_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Images\noavatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\bv_customers_w.png" />
+    <Resource Include="Views\Assets\Icons\bv_employees_w.png" />
+    <Resource Include="Views\Assets\Icons\bv_inventory_w.png" />
+    <Resource Include="Views\Assets\Icons\bv_statistic_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\add_b.png" />
+    <Resource Include="Views\Assets\Icons\delete_b.png" />
+    <Resource Include="Views\Assets\Icons\edit_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\add_w.png" />
+    <Resource Include="Views\Assets\Icons\delete_w.png" />
+    <Resource Include="Views\Assets\Icons\edit_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Assets\Icons\excel_b.png" />
+    <Resource Include="Views\Assets\Icons\excel_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo-mini.ico" />
+    <Content Include="MyStoreDatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyStoreDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>MyStoreDatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyStoreDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyStoreDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>MyStoreDatabaseModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Views\Assets\Icons\logo-mini.ico" />
+    <SplashScreen Include="Views\Assets\Images\splashscreen.jpg" />
+    <Resource Include="Views\Assets\Icons\suc_bronze.png" />
+    <Resource Include="Views\Assets\Icons\suc_gold.png" />
+    <Resource Include="Views\Assets\Icons\suc_silver.png" />
+    <Resource Include="Views\Assets\Icons\suc_customers_g.png" />
+    <Resource Include="Views\Assets\Icons\suc_money_g.png" />
+    <Resource Include="Views\Assets\Icons\suc_products_g.png" />
+    <Resource Include="Views\Assets\Icons\suc_purchases_g.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.3.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.3.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props'))" />
+  </Target>
+</Project>
